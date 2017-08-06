@@ -1,0 +1,21 @@
+#tomcat
+server:
+  tomcat:
+    uri-encoding: utf-8
+#log
+#mybatis
+mybatis:
+  config-location: classpath:mybatis/config/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+logging:
+  level:
+    root: info
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+
+
+
+
+

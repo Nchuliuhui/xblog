@@ -1,0 +1,77 @@
+body {
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #676a6c
+
+}
+
+.am-dropdown ul li a {
+    font-size: smaller;
+    border-radius: 3px;
+    color: inherit;
+    line-height: 25px;
+    margin: 4px;
+    text-align: left;
+    font-weight: normal;
+
+}
+
+.my-modal-header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.my-model-title {
+    text-align: left;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    margin-left: 0;
+}
+
+.my-modal-body {
+    padding-right: 15px;
+    padding-left: 15px;
+
+}
+
+.my-modal-body .toolbar {
+    height: 50px;
+}
+
+.my-modal-body  label {
+    display: block;
+    float: left;
+    clear: left;
+    width: 100px;
+    line-height: 50px;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+.my-modal-body .am-g .wrapper{
+    height:50px;
+}
+.my-modal-body input{
+    display: block;
+    float: left;
+    margin-top:18px;
+}
+.my-modal-body .img-wapper{
+    height: 364px;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.25);
+    background-color: #fcfcfc;
+    overflow: hidden;
+
+}
+.img-preview{
+    float: left;
+    margin-top: 15px;
+    margin-right: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: hidden;
+    width: 178px;
+    height: 178px;
+}
