@@ -75,3 +75,17 @@ body {
     width: 178px;
     height: 178px;
 }
+.img-btn-grp{
+    margin-top:30px;
+}
+.img-btn-grp .am-u-sm-4 button{
+    float: left;
+    margin-right:10px;
+}
+.img-btn-grp .am-u-sm-5 button{
+    float: right;
+    margin-left: 10px;
+}
+.img-btn-grp div button{
+    height:32px;
+}

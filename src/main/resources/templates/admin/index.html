@@ -142,15 +142,16 @@
                <div class="my-modal-body">
                    <div class="am-g">
                        <div class="wrapper">
+                           <input type="file" id="inputImage" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
                            <label for="chooseImg">请选择图片</label>
-                           <input type="button" id="chooseImg" class="am-btn am-btn-danger am-radius" value="请选择图片">
+                           <input type="button" id="chooseImg" onclick="selectFile()" class=" am-btn-sm am-btn am-btn-danger am-radius" value="请选择图片">
                        </div>
                    </div>
                    <div class="am-g" style="margin-top: 0">
                         <div class="am-u-sm-9">
                             <div class="img-wapper">
                                 <div class="cropper-container cropper-bg">
-
+                                    <img id="image" alt="Picture" style="max-width: 100%;width: 570px;height: 570px;">
                                 </div>
                             </div>
                         </div>
@@ -160,7 +161,21 @@
                             </div>
                         </div>
                    </div>
-                   <div class="img-btn-grp"></div>
+                   <div class="img-btn-grp am-g">
+                        <div class="am-u-sm-4">
+
+                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate" data-option="-90"> <i class="am-icon-rotate-left fa-undo" aria-hidden="true">向左旋转</i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate" data-option="90"> <i class="am-icon-rotate-right fa-undo" aria-hidden="true">向右旋转</i></button>
+                        </div>
+                        <div class="am-u-sm-5">
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" onclick="reset()"> <i class="am-icon-refresh" aria-hidden="true"></i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom" data-option="0.1"> <i class="am-icon-search-plus " aria-hidden="true"></i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom" data-option="-0.1"> <i class="am-icon-search-minus" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="am-u-sm-3">
+                            <button  class="am-btn am-btn-danger am-radius am-btn-block"><i class="am-icon-save" aria-hidden="true">保存修改</i></button>
+                        </div>
+                   </div>
                </div>
             </div>
         </div>
@@ -172,10 +187,8 @@
 <script src="/js/dataTables.responsive.min.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/cropper.min.js"></script>
+<script src="/js/img-upload.js"></script>
 <script>
-    $(function() {
-        $('#my-cropper').cropper();
-    });
 </script>
 </body>
 
