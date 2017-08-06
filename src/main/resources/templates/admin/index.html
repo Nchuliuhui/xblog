@@ -157,7 +157,9 @@
                         </div>
                         <div class="am-u-sm-3">
                             <div class="img-preview">
-                                <img src="/img/yukong.JPG" alt=""/>
+                                <form id="imgForm" th:action="@{/admin/upload}" enctype="multipart/form-data">
+                                    <img src="/img/yukong.JPG" alt=""/>
+                                </form>
                             </div>
                         </div>
                    </div>
@@ -173,7 +175,7 @@
                             <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom" data-option="-0.1"> <i class="am-icon-search-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="am-u-sm-3">
-                            <button  class="am-btn am-btn-danger am-radius am-btn-block"><i class="am-icon-save" aria-hidden="true">保存修改</i></button>
+                            <button  class="am-btn am-btn-danger am-radius am-btn-block" data-method="getCroppedCanvas"><i class="am-icon-save" aria-hidden="true">保存修改</i></button>
                         </div>
                    </div>
                </div>

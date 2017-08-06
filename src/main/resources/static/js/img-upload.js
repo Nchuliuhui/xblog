@@ -2,6 +2,7 @@
  * Created by xp on 2017/8/6.
  */
 $(document).ready(function(){
+
     'use strict';
     // 初始化
     var $image =  $('#image');
@@ -21,10 +22,23 @@ $(document).ready(function(){
 
             case 'getCroppedCanvas':
                 if (result) {
+                    var formData = new FormData($( "#imgForm" )[0]);
+                    var url = $( "#imgForm" ).attr('action');
+                    $.ajax({
+                        url: url ,
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (returndata) {
 
-                    // 显示 Modal
-                    $('#cropped-modal').modal().find('.am-modal-bd').html(result);
-                    $('#download').attr('href', result.toDataURL('image/jpeg'));
+                        },
+                        error: function (returndata) {
+
+                        }
+                    });
                 }
                 break;
         }
@@ -54,7 +68,6 @@ $(document).ready(function(){
                     window.alert('Please choose an image file.');
                 }
             }
-
             // Amazi UI 上传文件显示代码
             var fileNames = '';
             $.each(this.files, function() {
