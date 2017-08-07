@@ -19,25 +19,26 @@ $(document).ready(function(){
         var result = $image.cropper(data.method, data.option, data.secondOption);
 
         switch (data.method) {
-
             case 'getCroppedCanvas':
                 if (result) {
-                    var formData = new FormData($( "#imgForm" )[0]);
-                    var url = $( "#imgForm" ).attr('action');
-                    $.ajax({
-                        url: url ,
-                        type: 'POST',
-                        data: formData,
-                        async: false,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function (returndata) {
+                    $image.cropper("getCroppedCanvas").toBlob(function(blob) {
+                        var formData = new FormData();
+                        formData.append('file', blob,'file');
+                        $.ajax({
+                            url: 'file/upload',
+                            type: 'POST',
+                            data: formData,
+                            async: false,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success: function (returndata) {
 
-                        },
-                        error: function (returndata) {
+                            },
+                            error: function (returndata) {
 
-                        }
+                            }
+                        });
                     });
                 }
                 break;

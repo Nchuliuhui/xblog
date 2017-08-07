@@ -151,14 +151,14 @@
                         <div class="am-u-sm-9">
                             <div class="img-wapper">
                                 <div class="cropper-container cropper-bg">
-                                    <img id="image" alt="Picture" style="max-width: 100%;width: 570px;height: 570px;">
+                                    <img id="image" alt="Picture" src="http://yukongaaa-img-upload.oss-cn-shanghai.aliyuncs.com/2017082190808445/ae2f099923f443c597ed9b0a38b6d65e" style="max-width: 100%;width: 570px;height: 570px;">
                                 </div>
                             </div>
                         </div>
                         <div class="am-u-sm-3">
                             <div class="img-preview">
-                                <form id="imgForm" th:action="@{/admin/upload}" enctype="multipart/form-data">
-                                    <img src="/img/yukong.JPG" alt=""/>
+                                <form id="imgForm" th:action="@{/file/upload}" >
+                                    <img src="/img/yukong.JPG"  name="file"/>
                                 </form>
                             </div>
                         </div>
