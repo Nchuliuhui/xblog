@@ -18,6 +18,8 @@ aliyun:
   oss:
     accessKey: LTAIfKWKYNEF1ipI
     accessKeySecret: qYTIS76T9GHcoqCzUI2NRr8uIFlix8
+    bucketName: yukongaaa-img-upload
+    endPoint: oss-cn-shanghai.aliyuncs.com
 
 
 
