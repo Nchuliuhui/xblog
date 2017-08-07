@@ -38,11 +38,11 @@
         <div class="tpl-sidebar-user-panel">
             <div class="tpl-user-panel-slide-toggleable">
                 <div class="tpl-user-panel-profile-picture">
-                    <img src="/img/yukong.JPG" alt=""/>
+                    <img id="myImg" th:src="${session.currentUser.imagename}" alt=""/>
                 </div>
                 <span class="user-panel-logged-in-text">
                      <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                    <span th:text="${session.currentUser.nickname}"></span>
+                    <span  th:text="${session.currentUser.nickname}"></span>
 
                 </span>
                 <!--<a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>-->
@@ -131,7 +131,8 @@
 
 
     <!-- 内容区域 -->
-    <div id="my-cropper" class="tpl-content-wrapper"></div>
+    <div id="my-cropper" class="tpl-content-wrapper">
+    </div>
     <div class="am-modal am-modal-no-btn" tabindex="-1" id="upload-image">
         <div class="am-modal-dialog">
             <div class="am-modal-hd my-modal-header">
@@ -151,7 +152,7 @@
                         <div class="am-u-sm-9">
                             <div class="img-wapper">
                                 <div class="cropper-container cropper-bg">
-                                    <img id="image" alt="Picture" src="http://yukongaaa-img-upload.oss-cn-shanghai.aliyuncs.com/2017082190808445/ae2f099923f443c597ed9b0a38b6d65e" style="max-width: 100%;width: 570px;height: 570px;">
+                                    <img id="image" alt="Picture" th:src="${session.currentUser.imagename}" style="max-width: 100%;width: 570px;height: 570px;">
                                 </div>
                             </div>
                         </div>
@@ -183,6 +184,15 @@
         </div>
     </div>
 </div>
+</div>
+<div class="am-modal am-modal-loading am-modal-no-btn " tabindex="-1" id="my-modal-loading">
+    <div class="am-modal-dialog" style="height: 230px">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
 </div>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/amazeui.datatables.min.js"></script>

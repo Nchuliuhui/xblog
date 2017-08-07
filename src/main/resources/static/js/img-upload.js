@@ -32,11 +32,18 @@ $(document).ready(function(){
                             cache: false,
                             contentType: false,
                             processData: false,
+                            beforeSend: function(){
+                               $("#my-modal-loading").modal('open');
+                               $("#upload-image").css('z-index','1000');
+                            },
                             success: function (returndata) {
-
+                                $("#my-modal-loading").modal('close');
+                                $("#upload-image").css('z-index','1300');
+                                alert("修改成功！");
+                                $("#myImg").attr("src",returndata.data);
                             },
                             error: function (returndata) {
-
+                                alert("修改失败！");
                             }
                         });
                     });

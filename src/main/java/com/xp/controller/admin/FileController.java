@@ -52,6 +52,9 @@ public class FileController {
             String url = AliOSSUtil.upload(file.getInputStream());
             Blogger blogger = (Blogger) request.getSession().getAttribute("currentUser");
             blogger.setImagename(url);
+            request.getSession().setAttribute("currentUser",blogger);
+            Blogger blogger1 = (Blogger) request.getSession().getAttribute("currentUser");
+            logger.info(blogger1.getImagename());
             bloggerService.updateBlogger(blogger);
             logger.info("修改头像成功" + url);
             return ResultUtil.success("上传成功!",url);

@@ -47,7 +47,7 @@ public class AliOSSUtil {
             ossClient.createBucket(createBucketRequest);
         }
         // 创建文件路径
-        String fileUrl = DateUtil.dateToString2(new Date()) + "/" + UUIDUtils.getUUID();
+        String fileUrl = DateUtil.dateToString2(new Date())  + UUIDUtils.getUUID();
         logger.info("fileUrl :" + fileUrl);
         ObjectMetadata objectMeta = new ObjectMetadata();
         objectMeta.setContentType("image/png");
@@ -56,7 +56,7 @@ public class AliOSSUtil {
         PutObjectResult result = ossClient.putObject(new PutObjectRequest(BUCKET_NAME, fileUrl, file,objectMeta));
         if (null != result) {
             logger.info("host:" + "yukongaaa-img-upload.oss-cn-shanghai.aliyuncs.com"+ File.separator + fileUrl);
-            return "yukongaaa-img-upload.oss-cn-shanghai.aliyuncs.com"+ File.separator + fileUrl;
+            return "http://yukongaaa-img-upload.oss-cn-shanghai.aliyuncs.com"+ File.separator + fileUrl;
         }
         return null;
     }
