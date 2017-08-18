@@ -89,3 +89,44 @@ body {
 .img-btn-grp div button{
     height:32px;
 }
+
+#password-modal .am-modal-dialog{
+    background-color: #2E3846;
+    font-size: 14px;
+}
+
+
+#password-modal .am-modal-hd {
+    background-color: #2E3846;
+}
+#password-modal .am-modal-bd{
+    background-color: #2E3846;
+    padding: 20px 30px 8px;
+}
+#password-modal .am-modal-bd input{
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #000000;
+}
+#password-modal .btn-row{
+    margin-top:10px;
+
+}
+#password-modal .btn-row .first{
+
+    margin-right:10px;
+}
+#password-modal .btn-row button{
+
+    display: block;
+    float: left;
+    width: 115px;
+
+
+    height: 32px;
+}
+
+#password-modal .am-modal-footer{
+    background-color: #2E3846;
+
+}

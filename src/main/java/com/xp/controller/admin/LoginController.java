@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(description = "博主登录")
 public class LoginController {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    //private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private BloggerService bloggerService;
@@ -55,12 +55,12 @@ public class LoginController {
             //根据token登录 会调用MyRealm中的doGetAuthenticationInfo方法进行身份认证
             subject.login(token);
             model.addAttribute("name","YuKong");
-            url = "admin/index";
+            url = "/admin/index";
         } catch (AuthenticationException e) {
             e.printStackTrace();
             url =  "login";
         } finally {
-            return url;
+            return "redirect:"+url;
         }
     }
 

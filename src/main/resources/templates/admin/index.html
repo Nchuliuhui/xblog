@@ -31,7 +31,6 @@
         </div>
 
     </header>
-
     <!-- 侧边导航栏 -->
     <div class="left-sidebar">
         <!-- 用户信息 -->
@@ -42,7 +41,7 @@
                 </div>
                 <span class="user-panel-logged-in-text">
                      <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                    <span  th:text="${session.currentUser.nickname}"></span>
+                    <span th:text="${session.currentUser.nickname}"></span>
 
                 </span>
                 <!--<a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>-->
@@ -51,8 +50,12 @@
                             class="am-icon-pencil">账号设置</span></a>
                     <ul class="am-dropdown-content">
                         <li class="am-dropdown-header">个人设置</li>
-                        <li><a href="#" data-am-modal="{target: '#upload-image', closeViaDimmer: 0, width: 800, height: 600}">修改头像</a></li>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="#"
+                               data-am-modal="{target: '#upload-image', closeViaDimmer: 0, width: 800, height: 600}">修改头像</a>
+                        </li>
+                        <li><a href="#"
+                               data-am-modal="{target: '#password-modal', closeViaDimmer: 0, width: 300, height: 270}">修改密码</a>
+                        </li>
                         <li><a href="#">个人资料</a></li>
                         <li><a href="#">退出登录</a></li>
                     </ul>
@@ -133,6 +136,7 @@
     <!-- 内容区域 -->
     <div id="my-cropper" class="tpl-content-wrapper">
     </div>
+    <!-- 图片上传模态框开始 -->
     <div class="am-modal am-modal-no-btn" tabindex="-1" id="upload-image">
         <div class="am-modal-dialog">
             <div class="am-modal-hd my-modal-header">
@@ -140,51 +144,85 @@
                 <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
             </div>
             <div class="am-modal-bd">
-               <div class="my-modal-body">
-                   <div class="am-g">
-                       <div class="wrapper">
-                           <input type="file" id="inputImage" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
-                           <label for="chooseImg">请选择图片</label>
-                           <input type="button" id="chooseImg" onclick="selectFile()" class=" am-btn-sm am-btn am-btn-danger am-radius" value="请选择图片">
-                       </div>
-                   </div>
-                   <div class="am-g" style="margin-top: 0">
+                <div class="my-modal-body">
+                    <div class="am-g">
+                        <div class="wrapper">
+                            <input type="file" id="inputImage"
+                                   style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
+                            <label for="chooseImg">请选择图片</label>
+                            <input type="button" id="chooseImg" onclick="selectFile()"
+                                   class=" am-btn-sm am-btn am-btn-danger am-radius" value="请选择图片">
+                        </div>
+                    </div>
+                    <div class="am-g" style="margin-top: 0">
                         <div class="am-u-sm-9">
                             <div class="img-wapper">
                                 <div class="cropper-container cropper-bg">
-                                    <img id="image" alt="Picture" th:src="${session.currentUser.imagename}" style="max-width: 100%;width: 570px;height: 570px;">
+                                    <img id="image" alt="Picture" th:src="${session.currentUser.imagename}"
+                                         style="max-width: 100%;width: 570px;height: 570px;">
                                 </div>
                             </div>
                         </div>
                         <div class="am-u-sm-3">
                             <div class="img-preview">
-                                <form id="imgForm" th:action="@{/file/upload}" >
-                                    <img src="/img/yukong.JPG"  name="file"/>
+                                <form id="imgForm" th:action="@{/file/upload}">
+                                    <img src="/img/yukong.JPG" name="file"/>
                                 </form>
                             </div>
                         </div>
-                   </div>
-                   <div class="img-btn-grp am-g">
+                    </div>
+                    <div class="img-btn-grp am-g">
                         <div class="am-u-sm-4">
 
-                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate" data-option="-90"> <i class="am-icon-rotate-left fa-undo" aria-hidden="true">向左旋转</i></button>
-                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate" data-option="90"> <i class="am-icon-rotate-right fa-undo" aria-hidden="true">向右旋转</i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate"
+                                    data-option="-90"><i class="am-icon-rotate-left fa-undo" aria-hidden="true">向左旋转</i>
+                            </button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-sm" data-method="rotate"
+                                    data-option="90"><i class="am-icon-rotate-right fa-undo" aria-hidden="true">向右旋转</i>
+                            </button>
                         </div>
                         <div class="am-u-sm-5">
-                            <button class="am-btn am-btn-danger am-radius am-btn-xs" onclick="reset()"> <i class="am-icon-refresh" aria-hidden="true"></i></button>
-                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom" data-option="0.1"> <i class="am-icon-search-plus " aria-hidden="true"></i></button>
-                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom" data-option="-0.1"> <i class="am-icon-search-minus" aria-hidden="true"></i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" onclick="reset()"><i
+                                    class="am-icon-refresh" aria-hidden="true"></i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom"
+                                    data-option="0.1"><i class="am-icon-search-plus " aria-hidden="true"></i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-xs" data-method="zoom"
+                                    data-option="-0.1"><i class="am-icon-search-minus" aria-hidden="true"></i></button>
                         </div>
                         <div class="am-u-sm-3">
-                            <button  class="am-btn am-btn-danger am-radius am-btn-block" data-method="getCroppedCanvas"><i class="am-icon-save" aria-hidden="true">保存修改</i></button>
+                            <button class="am-btn am-btn-danger am-radius am-btn-block" data-method="getCroppedCanvas">
+                                <i class="am-icon-save" aria-hidden="true">保存修改</i></button>
                         </div>
-                   </div>
-               </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!-- 图片上传模态框结束 -->
+<!--修改密码模态框开始-->
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="password-modal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd"><span style="color: red">修改密码</span>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div class="am-g">
+                <input type="text" class="am-form-field am-radius" name="oldPassword" placeholder="旧密码">
+                <input type="text" class="am-form-field am-radius" name="oldPassword" placeholder="新密码">
+                <input type="text" class="am-form-field am-radius" name="oldPassword" placeholder="再次输入新密码">
+            </div>
+            <div class="am-g btn-row">
+                <button type="button " class="first am-btn am-btn-default am-btn-lg am-btn-danger am-radius">提交</button>
+                <button type="button" class="am-btn am-btn-default am-btn-lg am-btn-warning am-radius">取消</button>
+            </div>
+        </div>
+    </div>
 </div>
+<!--修改密码模态框结束-->
+</div>
+
+<!-- 等待动画开始-->
 <div class="am-modal am-modal-loading am-modal-no-btn " tabindex="-1" id="my-modal-loading">
     <div class="am-modal-dialog" style="height: 230px">
         <div class="spinner">
@@ -194,6 +232,8 @@
         </div>
     </div>
 </div>
+<!-- 等待动画结束-->
+<script src="/js/bootstrap.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/amazeui.datatables.min.js"></script>
 <script src="/js/dataTables.responsive.min.js"></script>

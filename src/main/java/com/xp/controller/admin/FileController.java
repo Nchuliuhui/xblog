@@ -46,7 +46,6 @@ public class FileController {
        // String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //logger.info("上传的后缀名为：" + suffixName);
         // 解决中文问题，liunx下中文路径，图片显示问题
-        File dest = new File(fileName);
         try {
            // file.transferTo(dest);
             String url = AliOSSUtil.upload(file.getInputStream());

@@ -2,21 +2,27 @@
 server:
   tomcat:
     uri-encoding: utf-8
-#log
+  port: 9095
+
 #mybatis
 mybatis:
   config-location: classpath:mybatis/config/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+#log
 logging:
   level:
     root: info
+#thymeleaf
 spring:
   thymeleaf:
     mode: LEGACYHTML5
     cache: false
+  template:
+    cache: false
   http:
     multipart:
       max-file-size: 10MB
+#阿里云oss配置
 aliyun:
   oss:
     accessKey: LTAIfKWKYNEF1ipI
