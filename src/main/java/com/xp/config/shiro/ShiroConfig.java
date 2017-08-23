@@ -33,8 +33,9 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //配置不会拦截的链接，按顺序
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/** ", "anon");
-
+        filterChainDefinitionMap.put("/admin/**", "authc");// 这里为了测试，固定写死的值，也可以从数据库或其他配置中读取
+        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/**", "anon");//anon 可以理解为不拦截
         //配置退出过滤链
         filterChainDefinitionMap.put("logout", "logout");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;

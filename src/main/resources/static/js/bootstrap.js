@@ -159,7 +159,7 @@ if (typeof jQuery === 'undefined') {
   // =================
 
   $.fn.alert.noConflict = function () {
-    $.fn.alert = old
+      css$.fn.alert = old
     return this
   }
 

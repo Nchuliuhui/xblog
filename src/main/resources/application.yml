@@ -2,7 +2,7 @@
 server:
   tomcat:
     uri-encoding: utf-8
-  port: 9095
+  port: 9090
 
 #mybatis
 mybatis:

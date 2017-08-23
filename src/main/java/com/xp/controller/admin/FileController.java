@@ -23,7 +23,7 @@ import java.io.IOException;
  * @Description 头像上传
  * @Date 2017/8/6 17:23
  */
-@RequestMapping(value = "/file")
+@RequestMapping(value = "/admin/file")
 @Controller
 public class FileController {
 

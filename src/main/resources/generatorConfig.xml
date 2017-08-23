@@ -8,9 +8,10 @@
     <classPathEntry location="/Users/kumataira/Documents/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressAllComments" value="false"/>
-            <property name="suppressDate" value="true"/>
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+        <commentGenerator type="com.xp.config.MyCommentGenerator">
         </commentGenerator>
 
         <!-- !!!! Database Configurations !!!! -->

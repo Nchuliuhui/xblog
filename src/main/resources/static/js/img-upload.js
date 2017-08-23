@@ -17,7 +17,8 @@ $(document).ready(function(){
         var $this = $(this);
         var data = $this.data();
         var result = $image.cropper(data.method, data.option, data.secondOption);
-
+        //loading框
+        var index =  jeBox.loading(3,'Loading',{ scrollbar: false,boxSize: [95,76],maskLock: true, maskClose: false, zIndex: 99999, maskColor: ["#000", .5]});
         switch (data.method) {
             case 'getCroppedCanvas':
                 if (result) {
@@ -32,18 +33,15 @@ $(document).ready(function(){
                             cache: false,
                             contentType: false,
                             processData: false,
-                            beforeSend: function(){
-                               $("#my-modal-loading").modal('open');
-                               $("#upload-image").css('z-index','1000');
-                            },
                             success: function (returndata) {
-                                $("#my-modal-loading").modal('close');
-                                $("#upload-image").css('z-index','1300');
-                                alert("修改成功！");
+                                jeBox.close(index);
+                                //提示层
+                                jeBox.msg('修改成功！', {icon: 2,time:3,scrollbar: false,boxSize: [180,55]});
                                 $("#myImg").attr("src",returndata.data);
                             },
                             error: function (returndata) {
-                                alert("修改失败！");
+                                jeBox.msg('修改失败！', {icon: 3,time:3,scrollbar: false,boxSize: [180,55]});
+                                jeBox.close(index);
                             }
                         });
                     });
@@ -63,7 +61,6 @@ $(document).ready(function(){
 
             if (files && files.length) {
                 file = files[0];
-
                 if (/^image\/\w+$/.test(file.type)) {
                     blobURL = URL.createObjectURL(file);
                     $image.one('built.cropper', function () {
