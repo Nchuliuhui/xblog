@@ -7,9 +7,7 @@ import com.xp.util.MD5Util;
 import com.xp.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,5 +38,17 @@ public class AdminBloggerController {
         blogger.setPassword(MD5Util.md5(oldPassword,MD5Util.SALT));
         bloggerService.updateBlogger(blogger);
         return ResultUtil.success("修改密码成功！");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/blogger" ,method = RequestMethod.POST)
+    public Result modifyBloggerInfo( Blogger blogger,HttpServletRequest request){
+        if(bloggerService.updateBlogger(blogger) > 0){
+            blogger = bloggerService.getBloggerByName(blogger.getUsername());
+            request.getSession().setAttribute("currentUser",blogger);
+            return ResultUtil.success("修改成功！");
+        } else{
+            return ResultUtil.error(500,"修改失败！");
+        }
     }
 }

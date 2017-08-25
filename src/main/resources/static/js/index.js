@@ -52,6 +52,29 @@ function modifyPassword(){
             }
         })
     }
+}
+
+/**
+ * 修改个人资料
+ */
+function updateBloggerInfo(){
+    var id = $("#id").val();
+    var nickname = $("#nickname").val();
+    var email = $("#email").val();
+    var address = $("#address").val();
+    var sign = $("#sign").val();
+    jQuery.ajax({
+        url:'/admin/blogger',
+        data:{'id':id,'nickname':nickname,'email':email,'address':address,'sign':sign},
+        dataType:'json',
+        type:"POST",
+        success:function(data){
+            jeBox.msg('修改成功！', {icon: 2,time:3,scrollbar: false,boxSize: [160,60]});
+        },
+        error:function (data) {
+            jeBox.msg('修改成功！', {icon: 2,time:3,scrollbar: false,boxSize: [160,60]});
+        }
+    })
 
 }
 
